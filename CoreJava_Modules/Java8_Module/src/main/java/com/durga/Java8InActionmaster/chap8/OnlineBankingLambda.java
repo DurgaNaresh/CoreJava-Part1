@@ -1,0 +1,28 @@
+package com.durga.Java8InActionmaster.chap8;
+
+import java.util.function.Consumer;
+
+/**
+ * @author Your Name or DurgaNaresh
+ * @date 23-12-2025
+ * Hard work definitely pays off.
+ * There is no substitute of hard work.
+ * There is no shortcut to success
+ */
+public class OnlineBankingLambda {
+    public static void main(String[] args) {
+        new OnlineBankingLambda().processCustomer(1337, (Customer c) -> System.out.println("Hello!"));
+    }
+
+    public void processCustomer(int id, Consumer<Customer> makeCustomerHappy){
+        Customer c = Database.getCustomerWithId(id);
+        makeCustomerHappy.accept(c);
+    }
+
+    // dummy Customer class
+    static private class Customer {}
+    // dummy Database class
+    static private class Database{
+        static Customer getCustomerWithId(int id){ return new Customer();}
+    }
+}
